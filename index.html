@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner & Grocery Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🍳 Meal Planner</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#program">Program</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Meal Planner & Grocery Manager</h1>
+                <p>Your smart kitchen companion for recipe management, pantry tracking, and grocery planning</p>
+            </div>
+        </section>
+
+        <section id="program" class="program-interface">
+            <h2>Meal Planner Interface</h2>
+            <div class="program-container">
+                <div class="sidebar">
+                    <button class="action-btn" onclick="showSection('add-recipe')">Add Recipe</button>
+                    <button class="action-btn" onclick="showSection('add-pantry')">Add to Pantry</button>
+                    <button class="action-btn" onclick="showSection('plan-meal')">Plan Meal</button>
+                    <button class="action-btn" onclick="showSection('create-meal')">Create Meal</button>
+                    <button class="action-btn" onclick="showSection('view-grocery')">View Grocery List</button>
+                    <button class="action-btn" onclick="showSection('view-pantry')">View Pantry</button>
+                </div>
+
+                <div class="main-content">
+                    <!-- Add Recipe Form -->
+                    <div id="add-recipe" class="program-section">
+                        <h3>Add New Recipe</h3>
+                        <form id="recipe-form">
+                            <input type="text" placeholder="Recipe Name" required>
+                            <div id="ingredients-list">
+                                <div class="ingredient-entry">
+                                    <input type="text" placeholder="Ingredient Name" required>
+                                    <input type="number" placeholder="Quantity" required min="1">
+                                    <button type="button" onclick="addIngredientField()">+</button>
+                                </div>
+                            </div>
+                            <button type="submit">Save Recipe</button>
+                        </form>
+                    </div>
+
+                    <!-- Add to Pantry Form -->
+                    <div id="add-pantry" class="program-section hidden">
+                        <h3>Add to Pantry</h3>
+                        <form id="pantry-form">
+                            <input type="text" placeholder="Item Name" required>
+                            <input type="number" placeholder="Quantity" required min="1">
+                            <button type="submit">Add Item</button>
+                        </form>
+                    </div>
+
+                    <!-- Plan Meal Section -->
+                    <div id="plan-meal" class="program-section hidden">
+                        <h3>Plan Meal</h3>
+                        <form id="plan-meal-form">
+                            <select id="recipe-select" required>
+                                <option value="">Select Recipe</option>
+                            </select>
+                            <button type="submit">Check Ingredients</button>
+                        </form>
+                        <div id="ingredient-check-results" class="results-display"></div>
+                    </div>
+
+                    <!-- Create Meal Section -->
+                    <div id="create-meal" class="program-section hidden">
+                        <h3>Create Meal</h3>
+                        <form id="create-meal-form">
+                            <select id="recipe-select-create" required>
+                                <option value="">Select Recipe</option>
+                            </select>
+                            <button type="submit">Create Meal</button>
+                        </form>
+                        <div id="meal-creation-results" class="results-display"></div>
+                    </div>
+
+                    <!-- View Grocery List Section -->
+                    <div id="view-grocery" class="program-section hidden">
+                        <h3>Grocery List</h3>
+                        <div id="grocery-list" class="list-display">
+                            <div class="priority-legend">
+                                <span class="priority-high">High Priority</span>
+                                <span class="priority-medium">Medium Priority</span>
+                                <span class="priority-low">Low Priority</span>
+                            </div>
+                            <ul id="grocery-items"></ul>
+                        </div>
+                    </div>
+
+                    <!-- View Pantry Section -->
+                    <div id="view-pantry" class="program-section hidden">
+                        <h3>Current Pantry</h3>
+                        <div id="pantry-list" class="list-display">
+                            <ul id="pantry-items"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Recipe Management</h3>
+                    <p>Add and store your favorite recipes with ingredients and quantities</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏪</div>
+                    <h3>Pantry Tracking</h3>
+                    <p>Keep track of your available ingredients and their quantities</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Meal Planning</h3>
+                    <p>Plan meals ahead and check ingredient availability</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <h3>Smart Grocery List</h3>
+                    <p>Automatically generate prioritized shopping lists</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Add Recipes</h3>
+                    <p>Input your recipes with ingredient details and required quantities</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Manage Pantry</h3>
+                    <p>Keep your pantry updated with available ingredients</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Plan Meals</h3>
+                    <p>Select recipes and check ingredient availability</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Generate Shopping List</h3>
+                    <p>Get smart grocery lists based on missing ingredients</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Meal Planner & Grocery Manager. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
